@@ -1,0 +1,33 @@
+[Unit]
+Description=Check archived X repost video availability
+Documentation=man:systemd.service(5)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/srv/media/X-Reposts
+
+[Service]
+Type=oneshot
+User=REPLACE_WITH_SERVICE_USER
+Group=REPLACE_WITH_SERVICE_USER
+WorkingDirectory=/usr/local/libexec/x-repost-downloader
+Environment=HOME=/home/REPLACE_WITH_SERVICE_USER
+UnsetEnvironment=DISPLAY WAYLAND_DISPLAY XAUTHORITY DBUS_SESSION_BUS_ADDRESS GNOME_KEYRING_CONTROL XDG_RUNTIME_DIR
+ExecStart=/usr/local/bin/x-repost-downloader availability-check
+Restart=on-failure
+RestartSec=15min
+RestartPreventExitStatus=20 22
+SuccessExitStatus=75
+TimeoutStopSec=45s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/srv/media/X-Reposts /home/REPLACE_WITH_SERVICE_USER/.local/share/x-repost-downloader/x-session-profile
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6

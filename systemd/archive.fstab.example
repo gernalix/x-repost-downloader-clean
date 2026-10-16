@@ -1,0 +1,2 @@
+# Optional removable archive mount; configure privately before installation.
+UUID=REPLACE_WITH_FILESYSTEM_UUID /srv/media ext4 nofail,x-systemd.automount,x-systemd.device-timeout=10s,x-systemd.mount-timeout=30s,errors=remount-ro 0 0

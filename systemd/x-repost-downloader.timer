@@ -1,0 +1,12 @@
+[Unit]
+Description=Check X video reposts every thirty minutes
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+RandomizedDelaySec=3min
+AccuracySec=1min
+Unit=x-repost-downloader.service
+
+[Install]
+WantedBy=timers.target

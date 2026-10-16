@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "x-repost-downloader"
+version = "0.2.1"
+description = "Authenticated, rate-conscious downloader for video reposts on X"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "playwright==1.61.0",
+  "secretstorage==3.5.0",
+  "yt-dlp[default]==2026.8.19",
+]
+
+[project.scripts]
+x-repost-downloader = "x_repost_downloader.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/x_repost_downloader"]

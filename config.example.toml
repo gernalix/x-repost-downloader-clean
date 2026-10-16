@@ -1,0 +1,6 @@
+# Non-secret example. Keep actual configuration outside this repository.
+account = "example_account"
+# Optional removable storage; both paths must match your private unit overrides.
+output_dir = "/srv/media/X-Reposts"
+required_mount = "/srv/media"
+minimum_free_gib = 20
